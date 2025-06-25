@@ -7,8 +7,15 @@ global lastHex := ""
 
 ; ========= config :3 ========
 global discordWebhook := ""
-global timerInterval := 4500 
 global robloxLink := ""
+global autoSell := Map(
+    "blue", true,
+    "purple", true,
+    "pink", false,
+    "red", false,
+    "gold", false
+)
+global timerInterval := 4500 
 ; no gamepess = ?ms
 ; gamepass = 4500 (not tested)
 ; ============================
@@ -27,14 +34,6 @@ AustisticMouse(x2, y2, duration := 7500) {
     }
     MouseMove(x2, y2) 
 }
-
-global autoSell := Map(
-    "blue", true,
-    "purple", true,
-    "pink", false,
-    "red", false,
-    "gold", false
-)
 
 F8::ToggleLoop()
 F1::ManualTrigger("red")
@@ -61,7 +60,6 @@ ClickThenCheck(*) {
     CoordMode("Mouse", "Screen")
     CoordMode("Pixel", "Screen")
 
-    ; === Emergency Color Detection ===
     emergencyColor := 0x393B3D
     pixelColor := PixelGetColor(780, 520, "RGB")
     if (pixelColor = emergencyColor) {
@@ -88,7 +86,6 @@ ClickThenCheck(*) {
         return
     }
 
-    ; === Color scan logic ===
     xCenter := 966
     y := 325
     tolerance := 15
